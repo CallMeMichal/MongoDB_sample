@@ -30,17 +30,16 @@ namespace MongoDB_sample.Service
 
         public async Task<GetCustomerDomain> GetCustomer(string id)
         {
-            var objectId = ObjectId.Parse(id);
-            var result = await _customerRepository.GetCustomer(objectId);
+            var result = await _customerRepository.GetCustomer(id);
             var mapped = _mapper.Map<GetCustomerDomain>(result);
             return mapped;
 
         }
 
-        public async Task<GetCustomersDomain> GetCustomers()
+        public async Task<List<GetCustomersDomain>> GetCustomers()
         {
             var result = await _customerRepository.GetCustomers();
-            var mapped = _mapper.Map<GetCustomersDomain>(result);
+            var mapped = _mapper.Map<List<GetCustomersDomain>>(result);
             return mapped;
 
         }

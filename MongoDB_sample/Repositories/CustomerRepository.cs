@@ -25,7 +25,7 @@ namespace MongoDB_sample.Repository
             return databaseEntity;
         }
 
-        public async Task<Customer> GetCustomer(ObjectId id)
+        public async Task<Customer> GetCustomer(string id)
         {
             var users = await _customers.Find(x => x.Id == id).FirstOrDefaultAsync();
             return users;
@@ -44,15 +44,13 @@ namespace MongoDB_sample.Repository
         {
 
             var databaseEntity = _mapper.Map<Customer>(dto);
-            var objectId = ObjectId.Parse(dto.Id);
-            var result = await _customers.FindOneAndReplaceAsync(x => x.Id == objectId, databaseEntity);
+            var result = await _customers.FindOneAndReplaceAsync(x => x.Id == dto.Id, databaseEntity);
             return result;
         }
 
         public async Task<Customer> DeleteCustomer(string id)
         {
-            var objectId = ObjectId.Parse(id);
-            var result = await _customers.FindOneAndDeleteAsync(x => x.Id == objectId);
+            var result = await _customers.FindOneAndDeleteAsync(x => x.Id == id);
             return result;
         }
     }

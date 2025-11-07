@@ -13,21 +13,10 @@ namespace MongoDB_sample.Mapper
         {
             CreateMap<CreateCustomerDomain, CreateCustomerDto>();
             CreateMap<CreateCustomerDto, Customer>();
-            CreateMap<Customer, GetCustomerDomain>()
-                .ForMember(dest => dest.Id,
-                           opt => opt.MapFrom(src => src.Id.ToString()));
-
-            CreateMap<Customer, GetCustomersDomain>()
-                .ForMember(dest => dest.Id,
-                           opt => opt.MapFrom(src => src.Id.ToString()));
-
-            CreateMap<UpdateCustomerDomain, UpdateCustomerDto>()
-                .ForMember(dest => dest.Id,
-                           opt => opt.MapFrom(src => ObjectId.Parse(src.Id)));
-
-            CreateMap<UpdateCustomerDto, Customer>()
-                .ForMember(dest => dest.Id,
-                           opt => opt.MapFrom(src => ObjectId.Parse(src.Id)));
+            CreateMap<Customer, GetCustomerDomain>();
+            CreateMap<Customer, GetCustomersDomain>();
+            CreateMap<UpdateCustomerDomain, UpdateCustomerDto>();
+            CreateMap<UpdateCustomerDto, Customer>();
         }
     }
 }
