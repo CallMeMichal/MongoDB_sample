@@ -11,6 +11,7 @@ namespace MongoDB_sample.Repository.Database.Entity
 
         [BsonElement("customer_name")]
         public string? CustomerName { get; set; } = string.Empty;
+        [BsonElement("email")]
         public string? Email { get; set; } = string.Empty;
     }
 }
